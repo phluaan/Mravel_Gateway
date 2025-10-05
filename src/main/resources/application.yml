@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mravel-gateway
+
+  cloud:
+    gateway:
+      routes:
+        # Route 1: AUTH SERVICE
+        - id: auth-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/auth/**
+
+        # Route 2: BOOKING SERVICE
+        - id: booking-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/booking/**
+
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+
+      globalcors:
+        corsConfigurations:
+          "[/**]":
+            allowedOrigins: "http://localhost:5173"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
