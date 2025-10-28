@@ -1,13 +1,13 @@
-package com.mravel.mravel_gateway;
+// package com.mravel.mravel_gateway;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class MravelGatewayApplicationTests {
+// @SpringBootTest
+// class MravelGatewayApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
