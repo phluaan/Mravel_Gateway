@@ -38,7 +38,8 @@ spring:
       globalcors:
         corsConfigurations:
           "[/**]":
-            allowedOrigins: "http://localhost:5173"
+            allowedOrigins:
+              - "http://localhost:5173"
             allowedMethods: "*"
             allowedHeaders: "*"
             allowCredentials: true
