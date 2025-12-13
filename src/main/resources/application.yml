@@ -40,6 +40,12 @@ spring:
           filters:
             - RewritePath=/api/plans/(?<segment>.*), /api/plans/${segment}
 
+        # REALTIME / WEBSOCKET
+        - id: realtime-ws
+          uri: ws://localhost:8090
+          predicates:
+            - Path=/ws/**
+
       # CORS setup
       globalcors:
         corsConfigurations:
