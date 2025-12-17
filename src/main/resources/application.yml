@@ -32,6 +32,12 @@ spring:
           predicates:
             - Path=/api/booking/**
 
+        # ADMIN SERVICE (port 8085)
+        - id: admin-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/admin/**
+
         # PLAN SERVICE
         - id: plan-service
           uri: http://localhost:8086
