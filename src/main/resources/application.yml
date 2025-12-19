@@ -38,6 +38,12 @@ spring:
           predicates:
             - Path=/api/admin/**
 
+        # PARTNER SERVICE (port 8087)
+        - id: partner-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/partner/**
+
         # PLAN SERVICE
         - id: plan-service
           uri: http://localhost:8086
