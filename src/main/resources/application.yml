@@ -46,6 +46,12 @@ spring:
           filters:
             - RewritePath=/api/plans/(?<segment>.*), /api/plans/${segment}
 
+        # NOTIFICATION SERVICE (port 8088)
+        - id: notification-service
+          uri: http://localhost:8088
+          predicates:
+            - Path=/api/notifications/**
+
         # REALTIME / WEBSOCKET
         - id: realtime-ws
           uri: ws://localhost:8090
