@@ -7,6 +7,10 @@ spring:
 
   cloud:
     gateway:
+      httpclient:
+        websocket:
+          # Prevent protocol-error disconnects (1002) when forwarding large STOMP frames.
+          max-frame-payload-length: 4194304
       routes:
         # AUTH SERVICE
         - id: auth-service
