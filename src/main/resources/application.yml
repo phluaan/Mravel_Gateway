@@ -62,6 +62,12 @@ spring:
           predicates:
             - Path=/api/notifications/**
 
+        # CHAT SERVICE (port 8089)
+        - id: chat-service
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/chat/**
+
         # REALTIME / WEBSOCKET
         - id: realtime-ws
           uri: ws://localhost:8090
