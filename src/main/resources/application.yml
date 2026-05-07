@@ -68,6 +68,12 @@ spring:
           predicates:
             - Path=/api/chat/**
 
+        # REALTIME SERVICE — HTTP (presence)
+        - id: realtime-http
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/realtime/**
+
         # REALTIME / WEBSOCKET
         - id: realtime-ws
           uri: ws://localhost:8090
