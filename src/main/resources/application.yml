@@ -58,6 +58,12 @@ spring:
           predicates:
             - Path=/api/notifications/**
 
+        # REVIEW SERVICE (port 8089)
+        - id: review-service
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/reviews/**
+
         # REALTIME / WEBSOCKET
         - id: realtime-ws
           uri: ws://localhost:8090
