@@ -74,6 +74,12 @@ spring:
           predicates:
             - Path=/api/chat/**
 
+        # AI PLAN SERVICE (port 8092)
+        - id: ai-plan-service
+          uri: http://localhost:8092
+          predicates:
+            - Path=/api/ai-plan/**
+
         # REALTIME SERVICE — HTTP (presence)
         - id: realtime-http
           uri: http://localhost:8090
