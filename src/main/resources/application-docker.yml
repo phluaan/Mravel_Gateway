@@ -87,8 +87,10 @@ spring:
             - Path=/api/realtime/**
 
         # REALTIME / WEBSOCKET
+        # Use http:// (not ws://) so the route also serves SockJS's plain HTTP
+        # GET /ws/info; Spring Cloud Gateway auto-upgrades the actual WS handshake.
         - id: realtime-ws
-          uri: ws://realtime-service:8090
+          uri: http://realtime-service:8090
           predicates:
             - Path=/ws/**
 
