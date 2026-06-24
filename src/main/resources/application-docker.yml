@@ -36,6 +36,12 @@ spring:
           predicates:
             - Path=/api/booking/**
 
+        # PAYMENT (MoMo / VNPay redirect + IPN) -> booking-service
+        - id: payment-service
+          uri: http://booking-service:8084
+          predicates:
+            - Path=/api/payment/**
+
         # ADMIN SERVICE
         - id: admin-service
           uri: http://admin-service:8085
