@@ -9,7 +9,6 @@ spring:
     gateway:
       httpclient:
         websocket:
-          # Prevent protocol-error disconnects (1002) when forwarding large STOMP frames.
           max-frame-payload-length: 4194304
       routes:
         # AUTH SERVICE
@@ -93,15 +92,13 @@ spring:
             - Path=/api/realtime/**
 
         # REALTIME / WEBSOCKET
-        # Use http:// (not ws://) so the route also serves SockJS's plain HTTP
-        # GET /ws/info; Spring Cloud Gateway auto-upgrades the actual WS handshake.
+        # Dùng http:// để route phục vụ cả SockJS /ws/info; gateway tự nâng cấp handshake WS.
         - id: realtime-ws
           uri: http://realtime-service:8090
           predicates:
             - Path=/ws/**
 
-      # CORS — same-origin in production (frontend nginx proxies /api & /ws),
-      # so this is mostly defensive. Override WEB_ORIGIN for cross-origin testing.
+      # CORS — cấu hình origin qua WEB_ORIGIN.
       globalcors:
         corsConfigurations:
           "[/**]":
@@ -114,7 +111,7 @@ spring:
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
 
-# CORS origin(s) for the Java CorsWebFilter (comma-separated). Same value as WEB_ORIGIN.
+# Origin cho CorsWebFilter (phân tách bằng dấu phẩy), cùng giá trị WEB_ORIGIN.
 gateway:
   cors:
     allowed-origins: ${WEB_ORIGIN:http://localhost:5173}
